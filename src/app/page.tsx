@@ -1,3 +1,4 @@
+import EmailForm from '@/components/EmailForm';
 export default function Home() {
   return (
     <main className="min-h-screen bg-black text-white px-6 py-12 font-sans">
