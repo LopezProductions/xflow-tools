@@ -1,10 +1,11 @@
 import { NextResponse } from 'next/server';
-import { Client } from '@notionhq/client';
-
-const notion = new Client({ auth: process.env.NOTION_TOKEN });
 
 export async function POST(req: Request) {
   try {
+    // Dynamic import to avoid module resolution issues
+    const { Client } = await import('@notionhq/client');
+    const notion = new Client({ auth: process.env.NOTION_TOKEN });
+
     const { email } = await req.json();
 
     if (!email || !email.includes('@')) {
